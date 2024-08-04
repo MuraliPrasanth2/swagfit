@@ -8,7 +8,7 @@ const Dropdown = ({ questionId, questionText, answers, formik }) => {
 				<select
 					name={questionId}
 					id={questionId}
-					className="w-full bg-inherit"
+					className="w-full bg-black"
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					value={formik.values.timing}

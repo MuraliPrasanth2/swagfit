@@ -4,7 +4,9 @@ const Radio = ({ questionId, questionText, answers, formik }) => {
 	const id = useId();
 
 	return (
-		<span className={"block mb-8 p-3 border-slate-800 border-2 rounded-md"}>
+		<span
+			className={"block mb-8 p-3 border-slate-800 border-2 rounded-md bg-black"}
+		>
 			<span className="font-semibold block">{questionText}</span>
 			{formik.touched[questionId] && formik.errors[questionId] ? (
 				<span className="text-red-400">{formik.errors[questionId]}</span>

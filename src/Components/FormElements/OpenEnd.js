@@ -1,7 +1,7 @@
 const OpenEnd = ({ type, questionId, questionText, formik }) => {
 	return (
 		<label className="flex flex-col mb-12">
-			<span className="font-semibold">{questionText}</span>
+			<span className="font-semibold mb-2">{questionText}</span>
 			<input
 				type={type}
 				name={questionId}

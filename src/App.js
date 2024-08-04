@@ -60,7 +60,7 @@ function App() {
     });
     return (
         <div
-            className="font-montserrat bg-black text-slate-50 "
+            className="font-montserrat bg-black text-slate-50 bg-roundedStripesBlack"
             onSubmit={formik.handleSubmit}
         >
             <div className="max-w-4xl mx-auto pt-12 px-8">

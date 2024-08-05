@@ -6,14 +6,14 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyBi4isOcIsReMmLQJw_W7Qqh2eE92l7lW4",
-	authDomain: "swagfit-2fabd.firebaseapp.com",
-	projectId: "swagfit-2fabd",
-	storageBucket: "swagfit-2fabd.appspot.com",
-	messagingSenderId: "800747875285",
-	appId: "1:800747875285:web:00f8e18793f8daceee2b5c",
+    apiKey: "AIzaSyAcgAr_JH6uokic-IxMQ5ZEfLttGfwvU1I",
+    authDomain: "swagfit-165cd.firebaseapp.com",
+    projectId: "swagfit-165cd",
+    storageBucket: "swagfit-165cd.appspot.com",
+    messagingSenderId: "789000491329",
+    appId: "1:789000491329:web:fc77a0763f91f532ca91c0",
 };
 
-export const firebaseApp = initializeApp(firebaseConfig);
-export const auth = getAuth(firebaseApp);
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 auth.useDeviceLanguage();

@@ -25,15 +25,10 @@ export default function LoginForm() {
         setRecaptchaVerifier(recaptchaVerifier);
     }, [setRecaptchaVerifier]);
 
-    const loginWithPhoneNumber = () => {
-        console.log("logging in with phonenumber");
-    };
-
     const handleLogin = (e) => {
         e.preventDefault();
         if (isValidNumber) {
             try {
-                loginWithPhoneNumber();
                 console.log("recaptchaVerifier", recapthaVerifier);
                 signInWithPhoneNumber(auth, number, recapthaVerifier)
                     .then((confirmationResult) => {
@@ -45,6 +40,7 @@ export default function LoginForm() {
                     .catch((error) => {
                         // Error; SMS not sent
                         // ...
+                        console.log(error);
                         console.log(confitmationResult);
                     });
             } catch (e) {

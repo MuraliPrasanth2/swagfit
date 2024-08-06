@@ -5,6 +5,9 @@ import { isValidPhoneNumber } from "libphonenumber-js/mobile";
 import { auth } from "../firebase/config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
+//inside project imports
+import { db } from "../firebase/config";
+
 // react hooks
 import { useEffect, useState } from "react";
 

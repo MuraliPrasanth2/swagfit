@@ -1,4 +1,4 @@
-import { auth } from "../firebase/config";
+import { user, auth } from "../firebase/config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import React, { useEffect, useState, useTransition } from "react";
 import {
@@ -7,13 +7,41 @@ import {
     InputOTPSeparator,
     InputOTPSlot,
 } from "../Components/ui/input-otp";
-import { Button } from "../Components/ui/button";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js/mobile";
+import { collection, doc } from "firebase/firestore";
+import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+
+//inside project imports
+import { db } from "../firebase/config";
 
 function OtpLogin() {
+    // const [value, loading, collectionError] = useCollection(
+    //     collection(db, "booking"),
+    // );
+    // console.log("value", value);
+    // console.log("loading", loading);
+    // console.log("collectinError", collectionError);
+    // if (value) {
+    //     console.log("value.docs", value.docs);
+    //     value.forEach((doc) => {
+    //         console.log(doc.id);
+    //         console.log(doc.data());
+    //     });
+    // }
+
+    // const [value, loading, docError] = useDocument(doc(db, "booking", "gokila"));
+    // console.log("value", value);
+    // console.log("loading", loading);
+    // console.log("docError", docError);
+    // if (value) {
+    //     console.log("value.exists()", value.exists());
+    //     console.log({ id: value.id, ...value.data() });
+    // }
+
+    console.log(user);
     const navigate = useNavigate();
 
     const [phoneNumber, setPhoneNumber] = useState("");

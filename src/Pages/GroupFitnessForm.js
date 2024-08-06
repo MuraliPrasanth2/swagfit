@@ -7,6 +7,9 @@ import Checkbox from "../Components/FormElements/Checkbox";
 // external Libraries
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { useAuth } from "../Contexts/AuthProvider";
 
 const formSchema = Yup.object().shape({
     name: Yup.string()
@@ -37,6 +40,9 @@ const formSchema = Yup.object().shape({
 });
 
 function GroupFitnessForm() {
+    const { user, authReady } = useAuth();
+    console.log("user", user);
+    console.log("authReady", authReady);
     const formik = useFormik({
         initialValues: {
             name: "",

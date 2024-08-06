@@ -160,13 +160,13 @@ function OtpLogin() {
     return (
         <>
             <div className="flex flex-col justify-center items-center bg-black h-screen text-white font-montserrat bg-roundedStripesBlack">
-                <h1 className="fixed top-16 text-center bg-clip-text text-transparent text-4xl font-bold  bg-gradient-to-r from-purple-400 to-pink-600">
+                <h1 className="fixed top-16 text-center animate-gradientText bg-[linear-gradient(to_right,_#4d4d4d_0,_white_10%,_#4d4d4d_20%)] bg-clip-text text-transparent font-black text-4xl font-bold uppercase">
                     Swag fit
                 </h1>
                 {!confirmationResult && (
                     <form onSubmit={requestOtp}>
                         <PhoneInput
-                            className="[&>input]:color-white [&>input]:bg-black [&>input]:rounded-md [&_select]:bg-black [&>input]:focus:border-fuchsia-500"
+                            className="[&>input]:color-white [&>input]:bg-black [&>input]:rounded-md [&_select]:bg-black"
                             defaultCountry="IN"
                             placeholder="Enter mobile number"
                             value={phoneNumber}
@@ -205,11 +205,7 @@ function OtpLogin() {
                     disabled={isButtonDisabled}
                     onClick={() => requestOtp()}
                     className={
-                        "mt-5 font-semibold " +
-                        (!isButtonDisabled
-                            ? "bg-gradient-to-r from-purple-400 to-pink-600 "
-                            : "") +
-                        "px-5 py-2 rounded-md disabled:bg-slate-700 "
+                        "mt-5 font-semibold bg-cyan-950 px-5 py-2 rounded-md disabled:bg-slate-700 "
                     }
                 >
                     {resendCountdown > 0

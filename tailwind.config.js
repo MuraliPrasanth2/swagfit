@@ -60,10 +60,19 @@ module.exports = {
                     from: { height: "var(--radix-accordion-content-height)" },
                     to: { height: "0" },
                 },
+                gradientText: {
+                    "0%": {
+                        "background-position": "0",
+                    },
+                    "100%": {
+                        "background-position": "400px",
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
+                gradientText: "gradientText 25s ease infinite",
             },
             fontFamily: {
                 montserrat: ["Montserrat", "sans-serif"],

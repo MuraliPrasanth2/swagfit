@@ -158,7 +158,7 @@ function OtpLogin() {
     return (
         <>
             <div className="flex flex-col justify-center items-center bg-black h-screen text-white font-montserrat bg-roundedStripesBlack">
-                <h1 className="fixed top-20 text-center font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                <h1 className="fixed top-16 text-center animate-gradientText bg-[linear-gradient(to_right,_#4d4d4d_0,_white_10%,_#4d4d4d_20%)] bg-clip-text text-transparent font-black text-4xl font-bold uppercase">
                     Swag fit
                 </h1>
                 {!confirmationResult && (

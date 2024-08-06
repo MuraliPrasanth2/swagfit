@@ -7,14 +7,18 @@ import {
     InputOTPSeparator,
     InputOTPSlot,
 } from "../Components/ui/input-otp";
-import { Input } from "../Components/ui/input";
 import { Button } from "../Components/ui/button";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { isValidPhoneNumber } from "libphonenumber-js/mobile";
 
 function OtpLogin() {
     const navigate = useNavigate();
 
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [isValidNumber, setIsValidNumber] = useState(null);
+    const [isPhoneNubmerTouched, setIsPhoneNubmerTouched] = useState(false);
     const [otp, setOtp] = useState("");
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState("");
@@ -114,6 +118,9 @@ function OtpLogin() {
         });
     };
 
+    const handlePhoneNumberInputBlur = () => {
+        setIsPhoneNubmerTouched(true);
+    };
     const loadingIndicator = (
         <div role="status" className="flex justify-center">
             <svg
@@ -136,59 +143,86 @@ function OtpLogin() {
         </div>
     );
 
+    useEffect(() => {
+        try {
+            if (isValidPhoneNumber(phoneNumber)) {
+                setIsValidNumber(true);
+            } else {
+                setIsValidNumber(false);
+            }
+        } catch (err) {
+            console.log("Please enter a number not a string");
+        }
+    }, [phoneNumber, isPhoneNubmerTouched]);
+
     return (
-        <div className="flex flex-col justify-center items-center">
-            {!confirmationResult && (
-                <form onSubmit={requestOtp}>
-                    <Input
-                        className="text-black"
-                        type="tel"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                    />
-                    <p className="text-xs text-gray-400 mt-2">
-                        Please enter your number with the country code (i.e. +44 for UK)
-                    </p>
-                </form>
-            )}
+        <>
+            <div className="flex flex-col justify-center items-center bg-black h-screen text-white font-montserrat bg-roundedStripesBlack">
+                <h1 className="fixed top-20 text-center font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                    Swag fit
+                </h1>
+                {!confirmationResult && (
+                    <form onSubmit={requestOtp}>
+                        <PhoneInput
+                            className="[&>input]:color-white [&>input]:bg-black [&>input]:rounded-md [&_select]:bg-black"
+                            defaultCountry="IN"
+                            placeholder="Enter mobile number"
+                            value={phoneNumber}
+                            onChange={setPhoneNumber}
+                            onBlur={handlePhoneNumberInputBlur}
+                        />
+                        {!isValidNumber && isPhoneNubmerTouched ? (
+                            <div className="text-red-700 text-center">
+                                Invalid phone number
+                            </div>
+                        ) : null}
+                    </form>
+                )}
 
-            {confirmationResult && (
-                <InputOTP maxLength={6} value={otp} onChange={(value) => setOtp(value)}>
-                    <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                    </InputOTPGroup>
-                    <InputOTPSeparator />
-                    <InputOTPGroup>
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                    </InputOTPGroup>
-                </InputOTP>
-            )}
+                {confirmationResult && (
+                    <InputOTP
+                        maxLength={6}
+                        value={otp}
+                        onChange={(value) => setOtp(value)}
+                    >
+                        <InputOTPGroup>
+                            <InputOTPSlot index={0} />
+                            <InputOTPSlot index={1} />
+                            <InputOTPSlot index={2} />
+                        </InputOTPGroup>
+                        <InputOTPSeparator />
+                        <InputOTPGroup>
+                            <InputOTPSlot index={3} />
+                            <InputOTPSlot index={4} />
+                            <InputOTPSlot index={5} />
+                        </InputOTPGroup>
+                    </InputOTP>
+                )}
 
-            <Button
-                disabled={!phoneNumber || isPending || resendCountdown > 0}
-                onClick={() => requestOtp()}
-                className="mt-5"
-            >
-                {resendCountdown > 0
-                    ? `Resend OTP in ${resendCountdown}`
-                    : isPending
-                        ? "Sending OTP"
-                        : "Send OTP"}
-            </Button>
+                <button
+                    disabled={
+                        !phoneNumber || isPending || resendCountdown > 0 || !isValidNumber
+                    }
+                    onClick={() => requestOtp()}
+                    className="mt-5 bg-fuchsia-700 px-5 py-2 rounded-md disabled:bg-slate-700"
+                >
+                    {resendCountdown > 0
+                        ? `Resend OTP in ${resendCountdown}`
+                        : isPending
+                            ? "Sending OTP"
+                            : "Send OTP"}
+                </button>
 
-            <div className="p-10 text-center">
-                {error && <p className="text-red-500">{error}</p>}
-                {success && <p className="text-green-500">{success}</p>}
+                <div className="p-10 text-center">
+                    {error && <p className="text-red-500">{error}</p>}
+                    {success && <p className="text-green-500">{success}</p>}
+                </div>
+
+                <div id="recaptcha-container" />
+
+                {isPending && loadingIndicator}
             </div>
-
-            <div id="recaptcha-container" />
-
-            {isPending && loadingIndicator}
-        </div>
+        </>
     );
 }
 

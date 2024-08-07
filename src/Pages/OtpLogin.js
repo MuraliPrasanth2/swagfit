@@ -11,11 +11,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js/mobile";
-import { collection, doc } from "firebase/firestore";
-import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+// import { collection, doc } from "firebase/firestore";
+// import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 
 //inside project imports
-import { db } from "../firebase/config";
+// import { db } from "../firebase/config";
 import { useAuth } from "../Contexts/AuthProvider";
 
 function OtpLogin() {
@@ -53,7 +53,7 @@ function OtpLogin() {
 		navigate(redirectPath);
 	}
 
-	if (user) {
+	if (user && !redirectPath) {
 		navigate("/");
 	}
 
@@ -199,6 +199,13 @@ function OtpLogin() {
 
 	const isButtonDisabled =
 		!phoneNumber || isPending || resendCountdown > 0 || !isValidNumber;
+	if (user) {
+		return (
+			<div>
+				You will be redirected to {redirectPath ? redirectPath : "home"}.
+			</div>
+		);
+	}
 	return (
 		<>
 			<div className="flex flex-col justify-center items-center bg-black h-screen text-white font-montserrat bg-roundedStripesBlack">

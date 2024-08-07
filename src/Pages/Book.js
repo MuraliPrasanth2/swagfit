@@ -24,7 +24,7 @@ const OnlineGroupFitnessProgramPricingSection = () => {
             </ul>
             <button
                 className="bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-semibold py-2 px-4 rounded"
-                onclick={() => {
+                onClick={() => {
                     navigate("/groupfitness");
                 }}
             >
@@ -107,7 +107,7 @@ const PersonalPhysioProgram = () => {
 };
 const Book = () => {
     return (
-        <div className="bg-gray-900 text-white py-16 ">
+        <div className="bg-gray-900 text-white py-16 bg-roundedStripesBlack">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold text-center mb-8">
                     Available Programs

@@ -7,9 +7,9 @@ import Checkbox from "../Components/FormElements/Checkbox";
 // external Libraries
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { collection } from "firebase/firestore";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { useAuth } from "../Contexts/AuthProvider";
+import { setDoc, collection, doc } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 const formSchema = Yup.object().shape({
     name: Yup.string()
@@ -43,6 +43,9 @@ function GroupFitnessForm() {
     const { user, authReady } = useAuth();
     console.log("user", user);
     console.log("authReady", authReady);
+    console.log("user.phoneNumber", user.phoneNumber);
+    const userPhoneNumber = user.phoneNumber;
+
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -62,6 +65,14 @@ function GroupFitnessForm() {
         onSubmit: (values) => {
             console.log(values);
             console.log(JSON.stringify(values, null, 2));
+            setDoc(doc(db, "groupFitness", userPhoneNumber), values)
+                .then((res) => {
+                    console.log(res);
+                    alert("Thanks for booking your slot, we will connect with you soon.");
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
         validationSchema: formSchema,
     });

@@ -5,6 +5,7 @@ import OtpLogin from "./Pages/OtpLogin";
 import PrivateRoute from "./RouterHelpers/PrivateRoute";
 import Home from "./Pages/Home";
 import Book from "./Pages/Book";
+import { useEffect } from "react";
 
 function App() {
 	const { authReady } = useAuth();

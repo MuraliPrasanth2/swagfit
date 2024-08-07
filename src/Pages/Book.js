@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const OnlineGroupFitnessProgramPricingSection = () => {
@@ -106,6 +107,10 @@ const PersonalPhysioProgram = () => {
     );
 };
 const Book = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="bg-gray-900 text-white py-16 bg-roundedStripesBlack">
             <div className="container mx-auto px-4">

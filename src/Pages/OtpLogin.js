@@ -19,6 +19,10 @@ import { isValidPhoneNumber } from "libphonenumber-js/mobile";
 import { useAuth } from "../Contexts/AuthProvider";
 
 function OtpLogin() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	// const [value, loading, collectionError] = useCollection(
 	//     collection(db, "booking"),
 	// );

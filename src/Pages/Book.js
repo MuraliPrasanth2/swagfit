@@ -5,23 +5,19 @@ const OnlineGroupFitnessProgramPricingSection = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
+        <div className="bg-neutral-900 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
             <h3 className="text-xl font-semibold mb-4">
-                Online group fitness Program
+                Online group fitness program
             </h3>
-            <p className="text-gray-400 mb-4">
-                Perfect for weight loss, flexibility and stability
-            </p>
+            <p className="text-gray-400 mb-4">📅 6 sessions per week</p>
             <p className="text-4xl font-bold mb-4">
-                3000 ₹<span className="text-base">/mo</span>
+                ₹ 3000 <span className="text-base">/mo</span>
             </p>
             <ul className="mb-8">
-                <li className="mb-2">2 High intensity cardio sessions / week</li>
-                <li className="mb-2">2 Plates sessions / week</li>
-                <li className="mb-2">2 Dance sessions / week</li>
-                <li className="mb-2">
-                    Improves weight loss, flexibility and stability
-                </li>
+                <li className="mb-2 font-bold">3 in one combo session</li>
+                <li className="mb-2 ml-3">🏃 High intensity interval training</li>
+                <li className="mb-2 ml-3">🕺 Pilates and dance fitness</li>
+                <li className="mb-2 italic">⏰ Flexible schedule</li>
             </ul>
             <button
                 className="bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-semibold py-2 px-4 rounded"
@@ -37,7 +33,7 @@ const OnlineGroupFitnessProgramPricingSection = () => {
 
 const PersonalFitnessTrainingPricingSection = () => {
     return (
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
+        <div className="bg-neutral-900 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
             <h3 className="text-xl font-semibold mb-4">Personal fitness program</h3>
             <p className="text-gray-400 mb-4">
                 Achieve your fitness goals with customized diet and workout plans and
@@ -63,7 +59,7 @@ const PersonalFitnessTrainingPricingSection = () => {
 
 const PersonalDanceProgram = () => {
     return (
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
+        <div className="bg-neutral-900 bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
             <h3 className="text-xl font-semibold mb-4">Dance Fitness Program</h3>
             <p className="text-gray-400 mb-4">
                 Stay fit and have fun with energetic dance workouts
@@ -86,7 +82,7 @@ const PersonalDanceProgram = () => {
 
 const PersonalPhysioProgram = () => {
     return (
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
+        <div className="bg-neutral-900 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
             <h3 className="text-xl font-semibold mb-4">Personal Physio Program</h3>
             <p className="text-gray-400 mb-4">
                 Recover and strengthen with tailored physiotherapy sessions

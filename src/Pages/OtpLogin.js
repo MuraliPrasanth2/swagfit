@@ -108,7 +108,7 @@ function OtpLogin() {
 
 				try {
 					await confirmationResult?.confirm(otp);
-					navigate("/");
+					// navigate("/");
 				} catch (error) {
 					console.log(error);
 					setError("Failed to verify OTP. Please check the OTP.");

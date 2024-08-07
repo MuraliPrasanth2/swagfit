@@ -85,18 +85,19 @@ function OtpLogin() {
 	}, [resendCountdown]);
 
 	useEffect(() => {
-		const recaptchaVerifier = new RecaptchaVerifier(
-			auth,
-			"recaptcha-container",
-			{
+		let recaptchaVerifier;
+		if (!user) {
+			recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
 				size: "invisible",
-			},
-		);
+			});
 
-		setRecaptchaVerifier(recaptchaVerifier);
+			setRecaptchaVerifier(recaptchaVerifier);
+		}
 
 		return () => {
-			recaptchaVerifier.clear();
+			if (!user) {
+				recaptchaVerifier.clear();
+			}
 		};
 	}, [setRecaptchaVerifier]);
 

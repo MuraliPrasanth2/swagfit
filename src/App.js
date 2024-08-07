@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./Contexts/AuthProvider";
 import OtpLogin from "./Pages/OtpLogin";
 import PrivateRoute from "./RouterHelpers/PrivateRoute";
+import { Home } from "lucide-react";
 
 function App() {
-    const { user, authReady } = useAuth();
+    const { authReady } = useAuth();
 
     const wrapPrivateRoute = (element, redirect) => {
         return <PrivateRoute redirect={redirect}>{element}</PrivateRoute>;
@@ -15,6 +16,7 @@ function App() {
         authReady && (
             <BrowserRouter>
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="/login/*" element={<OtpLogin />} />
                     <Route
                         path="/book"

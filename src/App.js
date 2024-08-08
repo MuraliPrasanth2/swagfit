@@ -19,6 +19,11 @@ function App() {
 	// 	exact
 	// 	element={wrapPrivateRoute(<Book />, "/book")}
 	// />
+	// <Route
+	// 	path="/groupfitness"
+	// 	exact
+	// 	element={wrapPrivateRoute(<GroupFitnessForm />, "/groupfitness")}
+	// />
 	return (
 		authReady && (
 			<BrowserRouter>
@@ -26,11 +31,7 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/login/*" element={<OtpLogin />} />
 					<Route path="/book" exact element={<Book />} />
-					<Route
-						path="/groupfitness"
-						exact
-						element={wrapPrivateRoute(<GroupFitnessForm />, "/groupfitness")}
-					/>
+					<Route path="/groupfitness" element={<GroupFitnessForm />} />
 				</Routes>
 			</BrowserRouter>
 		)

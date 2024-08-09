@@ -5,7 +5,7 @@ import OtpLogin from "./Pages/OtpLogin";
 import PrivateRoute from "./RouterHelpers/PrivateRoute";
 import Home from "./Pages/Home";
 import Book from "./Pages/Book";
-import { useEffect } from "react";
+import PersonalFitnessForm from "./Pages/PersonalFitnessForm";
 
 function App() {
 	const { authReady } = useAuth();
@@ -19,11 +19,6 @@ function App() {
 	// 	exact
 	// 	element={wrapPrivateRoute(<Book />, "/book")}
 	// />
-	// <Route
-	// 	path="/groupfitness"
-	// 	exact
-	// 	element={wrapPrivateRoute(<GroupFitnessForm />, "/groupfitness")}
-	// />
 	return (
 		authReady && (
 			<BrowserRouter>
@@ -31,7 +26,12 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/login/*" element={<OtpLogin />} />
 					<Route path="/book" exact element={<Book />} />
-					<Route path="/groupfitness" element={<GroupFitnessForm />} />
+					<Route path="/groupfitness" exact element={<GroupFitnessForm />} />
+					<Route
+						path="/personalfitness"
+						exact
+						element={<PersonalFitnessForm />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		)

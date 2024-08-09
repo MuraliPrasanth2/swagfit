@@ -100,6 +100,8 @@ const PersonalDanceProgram = () => {
 };
 
 const PersonalPhysioProgram = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div className="bg-neutral-900 p-8 rounded-lg shadow-lg w-full max-w-96 self-stretch flex flex-col justify-evenly">
 			<h3 className="text-xl font-semibold mb-4">Personal Physio Program</h3>
@@ -119,7 +121,12 @@ const PersonalPhysioProgram = () => {
 				<li className="mb-2">🤝 Dedicated support for faster recovery</li>
 				<li className="mb-2">⏰ Flexible scheduling to fit your needs</li>
 			</ul>
-			<div className="button-rainbow-container mx-auto mt-9 before:absolute before:top-0 before:left-0 before:h-full before:w-full before:block hover:before:blur-lg active:before:blur-lg z-[1] before:-z-10">
+			<div
+				className="button-rainbow-container mx-auto mt-9 before:absolute before:top-0 before:left-0 before:h-full before:w-full before:block hover:before:blur-lg active:before:blur-lg z-[1] before:-z-10"
+				onClick={() => {
+					navigate("/physiofitness");
+				}}
+			>
 				<button className="button-rainbow z-[3] w-60">Get Started</button>
 			</div>
 		</div>

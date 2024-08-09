@@ -6,6 +6,7 @@ import PrivateRoute from "./RouterHelpers/PrivateRoute";
 import Home from "./Pages/Home";
 import Book from "./Pages/Book";
 import PersonalFitnessForm from "./Pages/PersonalFitnessForm";
+import PhysioFitnessForm from "./Pages/PhysioFitnessForm";
 
 function App() {
 	const { authReady } = useAuth();
@@ -32,6 +33,7 @@ function App() {
 						exact
 						element={<PersonalFitnessForm />}
 					/>
+					<Route path="/physiofitness" exact element={<PhysioFitnessForm />} />
 				</Routes>
 			</BrowserRouter>
 		)

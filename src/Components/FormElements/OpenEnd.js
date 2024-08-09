@@ -1,6 +1,13 @@
-const OpenEnd = ({ type, questionId, questionText, formik }) => {
+const OpenEnd = ({
+	type,
+	questionId,
+	questionText,
+	formik,
+	disabled,
+	hide,
+}) => {
 	return (
-		<label className="flex flex-col mb-12">
+		<label className={`flex flex-col mb-12 ${hide ? "hidden" : ""}`}>
 			<span className="font-semibold mb-2">{questionText}</span>
 			<input
 				type={type}
@@ -10,6 +17,7 @@ const OpenEnd = ({ type, questionId, questionText, formik }) => {
 				onChange={formik.handleChange}
 				value={formik.values[questionId]}
 				onBlur={formik.handleBlur}
+				disabled={disabled}
 			/>
 			{formik.touched[questionId] && formik.errors[questionId] ? (
 				<span className="text-red-400">{formik.errors[questionId]}</span>

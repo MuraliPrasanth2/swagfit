@@ -213,8 +213,8 @@ function GroupFitnessForm() {
 						<p className="text-md font-medium">Morning / Afternoon / Evening</p>
 					</div>
 					<div className="text-center">
-						<h2 className="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 shadow-2xl">
-							All for Only <span className="text-6xl">₹3000</span> per person!
+						<h2 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600">
+							All for Only <span className="text-4xl">₹3000</span> per person!
 						</h2>
 					</div>
 				</section>

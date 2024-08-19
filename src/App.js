@@ -8,6 +8,7 @@ import Book from "./Pages/Book";
 import PersonalFitnessForm from "./Pages/PersonalFitnessForm";
 import PhysioFitnessForm from "./Pages/PhysioFitnessForm";
 import PersonalDanceTrainingForm from "./Pages/PersonalDanceFrom";
+import NavBar from "./Components/NavBar";
 
 function App() {
     const { authReady } = useAuth();
@@ -20,6 +21,7 @@ function App() {
     return (
         authReady && (
             <BrowserRouter>
+                <NavBar />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login/*" element={<OtpLogin />} />
@@ -49,7 +51,10 @@ function App() {
                     <Route
                         path="/dancefitness"
                         exact
-                        element={<PersonalDanceTrainingForm />}
+                        element={wrapPrivateRoute(
+                            <PersonalDanceTrainingForm />,
+                            "/dancefitness",
+                        )}
                     />
                 </Routes>
             </BrowserRouter>

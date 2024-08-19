@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FAQAccordion from "../Components/FAQAccordian";
 import { gsap } from "gsap";
@@ -73,7 +73,7 @@ const Home = () => {
                     </div>
                     <div className="col-start-1 row-start-1 max-w-screen z-[7] bg-[rgba(0,_0,_0,_0.8)] background-overlay"></div>
                     <div
-                        className="col-start-1 row-start-1 max-w-screen z-[8] content p-8"
+                        className="col-start-1 row-start-1 max-w-screen z-[8] content p-8 pt-0"
                         id="#content"
                     >
                         <h1 className="text-[3rem] md:text-[4rem] lg:text-[5rem] text-[rgba(255,_255,_255,_0.6)] mb-12 leading-[0.8] font-normal main-text reveal-from-below">

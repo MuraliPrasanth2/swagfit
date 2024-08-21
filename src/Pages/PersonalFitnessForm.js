@@ -13,6 +13,7 @@ import { db } from "../firebase/config";
 import { useEffect, useRef, useState } from "react";
 import { useDocument } from "react-firebase-hooks/firestore";
 import dayjs from "dayjs";
+import SlotBookedAlreadyMessage from "../Components/SlotBookedAlready";
 
 const formSchema = Yup.object().shape({
 	// Personal Information
@@ -220,16 +221,6 @@ function PersonalFitnessForm() {
 			}
 		}
 	}, [storedProfileValues, haveProfileValues, formik]);
-
-	const SlotBookedAlreadyMessage = () => {
-		return (
-			<>
-				<div className="text-center font-semibold bg-fuchsia-600 p-4 rounded-[3rem]">
-					You have booked your slot for this program.
-				</div>
-			</>
-		);
-	};
 
 	return (
 		<div
@@ -495,7 +486,11 @@ function PersonalFitnessForm() {
 						</div>
 					</form>
 				)}
-				{slotBookedAlready && <SlotBookedAlreadyMessage />}
+				{slotBookedAlready && (
+					<SlotBookedAlreadyMessage
+						paymentInfo={storedFormValues.data().paymentInfo}
+					/>
+				)}
 			</div>
 		</div>
 	);

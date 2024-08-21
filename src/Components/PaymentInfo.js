@@ -15,46 +15,46 @@ const PaymentInfo = ({ paymentInfo }) => {
 	);
 
 	return (
-		<div>
-			{!sortedPayments.length && (
+		<div className="overflow-x-auto">
+			{!sortedPayments.length ? (
 				<div className="text-gray-400 mt-2 text-center">
 					No payment info available for this slot.
 				</div>
-			)}
-			{sortedPayments.length > 0 && (
-				<ul className="mt-1 space-y-1 text-center p-4 bg-black">
-					<li
-						className={`rounded-sm text-white text-sm mt-2 flex justify-between items-center`}
-					>
-						<span className="inline-block font-semibold">From</span>
-						<span className="inline-block font-semibold">To</span>
-						<span className="inline-block font-semibold">Amount</span>
-					</li>
-					{sortedPayments.map((payment, index) => {
-						let textColor = "text-gray-500"; // default for past dates
-						if (isCurrent(payment.from, payment.to)) {
-							textColor = "text-green-400";
-						} else if (isFuture(payment.from)) {
-							textColor = "text-green-100";
-						}
+			) : (
+				<table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
+					<thead className="bg-gray-100">
+						<tr className="text-left border-b">
+							<th className="py-3 px-6 font-semibold text-gray-600">From</th>
+							<th className="py-3 px-6 font-semibold text-gray-600">To</th>
+							<th className="py-3 px-6 font-semibold text-gray-600">Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						{sortedPayments.map((payment, index) => {
+							let textColor = "text-gray-600"; // default for past dates
+							if (isCurrent(payment.from, payment.to)) {
+								textColor = "text-green-500";
+							} else if (isFuture(payment.from)) {
+								textColor = "text-green-300";
+							}
 
-						return (
-							<li
-								key={index}
-								className={`rounded-sm ${textColor} text-sm mt-2 flex justify-between items-center`}
-							>
-								<span className="inline-block">
-									{dayjs(payment.from).format("YY-MMM-D")}
-								</span>
-								<span className="inline-block">
-									{dayjs(payment.to).format("YY-MMM-D")}
-								</span>
-
-								<span className="inline-block"> {payment.amount}</span>
-							</li>
-						);
-					})}
-				</ul>
+							return (
+								<tr
+									key={index}
+									className={`border-b hover:bg-gray-50 ${textColor} font-semibold`}
+								>
+									<td className="py-3 px-6">
+										{dayjs(payment.from).format("DD/MM/YY")}
+									</td>
+									<td className="py-3 px-6">
+										{dayjs(payment.to).format("DD/MM/YY")}
+									</td>
+									<td className="py-3 px-6">{payment.amount}</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
 			)}
 		</div>
 	);
